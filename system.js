@@ -1,7 +1,7 @@
 
-
 selectedRow = null;
 function onFormSubmit(){
+    if (validate()){
     var formData = readFormData();
     if (selectedRow == null){
     insertNewRecord(formData);
@@ -9,7 +9,7 @@ function onFormSubmit(){
     else{
     updateRecord(formData);
 }
-    resetForm();
+    resetForm();}
 }
 function readFormData(){
     var formData = {};
@@ -21,7 +21,6 @@ function readFormData(){
     formData["D_ex"]= document.getElementById("D_ex").value;
     return formData;
 }
-
 
 function insertNewRecord(data){
     var table = document.getElementById("Drug_list").getElementsByTagName('tbody')[0];
@@ -40,7 +39,7 @@ function insertNewRecord(data){
     Cell6.innerHTML = data.D_ex;
     Cell6 = newRow.insertCell(6);
     Cell6.innerHTML = `<button onClick='onEdit(this)'>Edit</button>
-                        <button onClick='onDelete(this)'>Delete</button>`;
+                      <button onClick='onDelete(this)'>Delete</button>`;
 }   
 function onEdit(td){
     selectedRow = td.parentElement.parentElement;
@@ -48,8 +47,8 @@ function onEdit(td){
     document.getElementById("D_name").value = selectedRow.cells[1].innerHTML;
     document.getElementById("D_price").value = selectedRow.cells[2].innerHTML;
     document.getElementById("D_quantity").value = selectedRow.cells[3].innerHTML;
-    document.getElementById("D_pur").value = selectedRow.cells[4].innerHTML
-    document.getElementById("D_ex").value = selectedRow.cells[5].innerHTML
+    document.getElementById("D_pur").value = selectedRow.cells[4].innerHTML;
+    document.getElementById("D_ex").value = selectedRow.cells[5].innerHTML;
 }
 
 function updateRecord(formData){
@@ -70,7 +69,7 @@ function onDelete(td){
 }
 function validate(){
     isValid = true;
-    if (document.getElementById("D_code").value ==""){
+    if (document.getElementById("D_name").value ==""){
         isValid = false;
         document.getElementById("DrugcodeValidationError").classList.remove("hide");
     } else{
@@ -81,6 +80,49 @@ function validate(){
     return isValid;
 }
 
+
+function search_name() {
+
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myName");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("Drug_list");
+  tr = table.getElementsByTagName("tr");
+
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+function search_code() {
+
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myCode");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("Drug_list");
+    tr = table.getElementsByTagName("tr");
+  
+  
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
 function resetForm(){
     document.getElementById("D_code").value = "";
     document.getElementById("D_name").value = "";

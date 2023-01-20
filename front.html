@@ -16,7 +16,7 @@
         <div class="row" id="head">
             <ul>
                 <li id="log"><i class="las la-laptop-medical"></i>
-                <li id="logo">PHarmacy</li>
+                <li id="logo">WitchCraft</li>
                 <li style="background-color: rgb(118, 179, 226);"><a href="#">About</a></li>
                 <li><a href="#">Setting</a></li>
                 <li><a href="#">Profile</a></li>
@@ -28,7 +28,7 @@
                 <form onsubmit="event.preventDefault();onFormSubmit()" autocomplete="off">
                     <div class="col">
                         <div id="in" >
-                            <label for="name">Medicine name: </label> 
+                            <label for="name">Medicine name: </label> <label class="validation-error hide font-color" id="DrugcodeValidationError">This field is to fill</label>
                             <input type="text" name="D_name" id="D_name" size="20">
                         </div>
                         <div id="in">
@@ -64,10 +64,12 @@
             </form>
         </div>
             <div class="col-md-6 col-lg-6 m-5 px-0" style="border:1px solid black; background-color: rgb(220, 220, 220);">
+                <input type="text" id="myCode" onkeyup="search_code()" placeholder="Search for codes..">
+                <input type="text" id="myName" onkeyup="search_name()" placeholder="Search for names..">
                 <table class="list" id="Drug_list" style="border:1px solid black; width: 100%; text-align: center;">
                     <thread>
-                        <tr>
-                            <th >Drug code</th>
+                        <tr class = "header">
+                            <th>Drug code</th>
                             <th>Drug Name</th>
                             <th style="width: 60px;">Price</th>
                             <th>Quantity</th>
