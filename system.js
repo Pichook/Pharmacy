@@ -1,7 +1,6 @@
-
-
 selectedRow = null;
 function onFormSubmit(){
+    if (validate()){
     var formData = readFormData();
     if (selectedRow == null){
     insertNewRecord(formData);
@@ -9,7 +8,7 @@ function onFormSubmit(){
     else{
     updateRecord(formData);
 }
-    resetForm();
+    resetForm();}
 }
 function readFormData(){
     var formData = {};
@@ -89,3 +88,45 @@ function resetForm(){
     document.getElementById("D_pur").value = "";
     document.getElementById("D_ex").value = "";
 }
+function search_name() {
+
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myName");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("Drug_list");
+    tr = table.getElementsByTagName("tr");
+  
+  
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+  function search_code() {
+  
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myCode");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("Drug_list");
+      tr = table.getElementsByTagName("tr");
+    
+    
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }

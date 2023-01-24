@@ -10,13 +10,13 @@
     <link href="style.css" rel="stylesheet">
     <title>Document</title>
 </head>
-<body style="height:max-content">
+<body>
 
     <div class="container-fluid" id="oL">
         <div class="row" id="head">
             <ul>
                 <li id="log"><i class="las la-laptop-medical"></i>
-                <li id="logo"><a href="#">PHarmacy</a></li>
+                <li id="logo"><a href= "home.html">PHarmacy</a></li>
                 <li style="background-color: rgb(118, 179, 226);"><a href="#">About</a></li>
                 <li><a href="#">Setting</a></li>
                 <li><a href="#">Profile</a></li>
@@ -32,8 +32,8 @@
                             <input type="text" name="D_name" id="D_name" size="20">
                         </div>
                         <div id="in">
-                            <label for="code">Medicine code:</label>
-                            <input type="text" name="D_code" id="D_code" size="20"><label class="validation-error hide" id="DrugcodeValidationError">This field is to fill</label>
+                            <label for="code">Medicine code:</label><label class="validation-error hide" id="DrugcodeValidationError">This field is to fill</label>
+                            <input type="text" name="D_code" id="D_code" size="20">
                         </div>
                         
                     </div>
@@ -64,10 +64,12 @@
             </form>
         </div>
             <div class="col-md-6 col-lg-6 m-5 px-0" style="border:1px solid black; background-color: rgb(220, 220, 220);">
+                <input type="text" id="myCode" onkeyup="search_code()" placeholder="Search for codes..">
+                <input type="text" id="myName" onkeyup="search_name()" placeholder="Search for names..">
                 <table class="list" id="Drug_list" style="border:1px solid black; width: 100%; text-align: center;">
                     <thread>
-                        <tr>
-                            <th >Drug code</th>
+                        <tr class = "header">
+                            <th>Drug code</th>
                             <th>Drug Name</th>
                             <th style="width: 60px;">Price</th>
                             <th>Quantity</th>
